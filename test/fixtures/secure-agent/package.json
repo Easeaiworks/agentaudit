@@ -1,0 +1,9 @@
+{
+  "name": "secure-agent-fixture",
+  "private": true,
+  "dependencies": {
+    "openai": "4.77.0",
+    "zod": "3.24.1",
+    "pino": "9.6.0"
+  }
+}

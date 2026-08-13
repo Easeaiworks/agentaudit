@@ -1,0 +1,10 @@
+{
+  "name": "vulnerable-agent-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "openai": "latest",
+    "express": "*",
+    "@modelcontextprotocol/sdk": ">=1.0.0"
+  }
+}

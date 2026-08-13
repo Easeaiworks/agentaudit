@@ -1,0 +1,31 @@
+{
+  "name": "agentaudit",
+  "version": "1.0.0",
+  "description": "Static analysis for AI agent codebases. Audits against the OWASP Top 10 for Agentic Applications (ASI01-ASI10) and the OWASP Top 10 for LLM Applications.",
+  "type": "module",
+  "bin": {
+    "agentaudit": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "templates", "redteam", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node --test test/*.test.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "owasp", "asi", "agentic", "ai-security", "llm-security",
+    "static-analysis", "sast", "eu-ai-act", "compliance", "ai-agents"
+  ],
+  "engines": { "node": ">=18" },
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}

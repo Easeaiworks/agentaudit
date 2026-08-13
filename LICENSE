@@ -1,0 +1,61 @@
+AgentAudit Commercial License
+Version 1.0
+
+Copyright (c) 2026. All rights reserved.
+
+1. GRANT
+
+Upon purchase, the Licensee is granted a perpetual, non-exclusive,
+non-transferable license to use, modify, and integrate this software
+("the Software") for the purpose of auditing software systems, subject
+to the tier purchased:
+
+  SINGLE PROJECT   Use within one (1) codebase or repository, by any
+                   number of developers within the purchasing entity.
+
+  TEAM             Use across unlimited codebases within a single legal
+                   entity, by up to twenty-five (25) developers.
+
+  CONSULTANCY      Use across unlimited codebases, including in paid
+                   client engagements, and the right to deliver generated
+                   reports to third-party clients under the Licensee's own
+                   branding.
+
+2. PERMITTED
+
+  - Use in commercial and internal projects.
+  - Modification of rules, templates, and source for the Licensee's needs.
+  - Inclusion in internal CI/CD pipelines and private infrastructure.
+  - Delivery of generated audit reports to clients (CONSULTANCY tier).
+
+3. NOT PERMITTED
+
+  - Redistribution, resale, sublicensing, or public republication of the
+    Software or any substantial portion of its rule set or templates.
+  - Publishing the Software to a public package registry or repository.
+  - Use of the Software to build a competing audit or scanning product
+    offered to third parties.
+
+4. NO WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+5. NOT LEGAL ADVICE; NOT A CERTIFICATION
+
+The Software performs static analysis of source code. It cannot observe
+runtime behaviour, infrastructure configuration, model weights, or
+organisational process. Output of the Software does not constitute a
+security certification, a conformity assessment, or legal advice, and
+does not establish compliance with the EU AI Act or any other regulation.
+Regulatory compliance requires assessment by qualified professionals.
+The Licensee remains solely responsible for the security and compliance
+of systems they build and operate.
+
+6. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
