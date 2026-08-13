@@ -1,58 +1,30 @@
 name: AgentAudit
-
-# Drop this file into .github/workflows/ in any repo that ships an AI agent.
-# It runs the audit on every PR and publishes results to the GitHub Security tab.
-
 on:
   pull_request:
   push:
-    branches: [main, master]
-  schedule:
-    # Re-run weekly: the rules move as OWASP publishes, even when your code doesn't.
-    - cron: "0 6 * * 1"
-
+    branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
-  security-events: write # required to upload SARIF
-
+  security-events: write
 jobs:
-  audit:
-    name: OWASP ASI / LLM audit
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Run AgentAudit
-        id: audit
-        # --fail-on critical gates the PR on critical findings only, so adopting
-        # the tool doesn't block every build on day one. Tighten to `high` once
-        # your baseline is clean.
+      - run: npm install
+      - run: npm run build
+      - run: node --test test/*.test.js
+      - name: Detection still fires on the vulnerable fixture
         run: |
-          npx --yes agentaudit@1.0.0 . \
-            --format sarif \
-            --output agentaudit.sarif \
-            --fail-on critical
-        continue-on-error: true
-
-      - name: Upload SARIF to GitHub code scanning
+          set +e
+          node dist/cli.js test/fixtures/vulnerable-agent --fail-on high
+          [ $? -ne 0 ] || { echo "::error::detection regressed"; exit 1; }
+      - name: Secure fixture stays clean
+        run: node dist/cli.js test/fixtures/secure-agent --fail-on low
+      - name: Report
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: agentaudit.sarif
-          category: agentaudit
-
-      - name: Generate markdown report for the job summary
-        if: always()
-        run: |
-          npx --yes agentaudit@1.0.0 . --format markdown --fail-on none \
-            >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Enforce gate
-        if: steps.audit.outcome == 'failure'
-        run: |
-          echo "::error::AgentAudit found critical findings. See the Security tab."
-          exit 1
+        run: node dist/cli.js test/fixtures/vulnerable-agent --format markdown --fail-on none >> "$GITHUB_STEP_SUMMARY"
